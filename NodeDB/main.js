@@ -10,11 +10,9 @@ async function run() {
 
 		const db = client.db('chamada');
 		const collection = db.collection('alunos');
-		// const resultado = await collection.insertMany(data);
+		const resultado = await collection.insertMany(data);
 		
-		// console.log(`${resultado.insertedCount} documentos inseridos!`);
-
-		await collection.updateOne({ nome: "Alexandro" }, { $set: {"apelido": "Choquei da Camargo" } });
+		console.log(`${resultado.insertedCount} documentos inseridos!`);
 
 		const alunos = await collection.find().toArray();
 		for (const aluno of alunos) {
