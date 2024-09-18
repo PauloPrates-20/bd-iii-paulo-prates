@@ -10,8 +10,12 @@ async function run() {
 
 		const db = client.db('chamada');
 		const collection = db.collection('alunos');
-		const resultado = await collection.insertMany(data);
-		
+		let resultado = await collection.deleteMany({});
+
+		console.log(`${resultado.deletedCount} documentos deletados!`);
+
+		resultado = await collection.insertMany(data);
+
 		console.log(`${resultado.insertedCount} documentos inseridos!`);
 
 		const alunos = await collection.find().toArray();
